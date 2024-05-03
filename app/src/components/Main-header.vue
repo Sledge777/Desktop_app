@@ -1,25 +1,44 @@
 <template lang="">
-    <div class="wrapper">
-        <div class="menu" @click="show()">
-            <ul>
-                <li></li>
-                <li></li>
-                <li></li>
-            </ul>
+    <div>
+        <div class="flex">
+            <div class="menu" @click="show()">
+                <ul>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </div>
+            <img src="@/assets/plus.png" @click="$router.push('/send')">
+            <div class="wrapper_auth">
+                <my-button @click="$router.push('/reg')">Зарегистрироваться</my-button>
+                <my-button @click="$router.push('/auth')">Войти</my-button>
+            </div>
         </div>
-        <aside class="test">
-
-        </aside>
+        <div>
+            <aside class="sideBar">
+                <Adress>{{ name }}</Adress>
+            </aside> 
+        </div>
     </div>
 </template>
 <script>
-export default {
-    data() {
+import Adress from './Adress.vue';
+import MyButton from './my-button.vue';
 
+
+
+export default {
+    components: {
+        Adress,MyButton
+    },
+    data() {
+        return {
+            name: '',
+        }
     },
     methods: {
         show() {
-            let el = document.querySelector(".test")
+            let el = document.querySelector(".sideBar")
             let el2 = document.querySelector(".menu")
             el.classList.toggle('show')
             el2.classList.toggle('menu__onclick')
@@ -28,20 +47,16 @@ export default {
 }
 </script>
 <style scoped>
-.wrapper {
-    background-image: url('/src/assets/eye.png');
-    background-size:contain;
-    background-repeat: no-repeat;
-    background-position: 50% 50%;
-    height: 98vh;
+.flex {
+    display: flex;
+    justify-content: space-between;
 }
 .menu {
     cursor: pointer;
     width: 70px;
     height: 70px;
     transition: all 0.3s;
-    margin:10px;
-    background-color: red;
+    margin:1%;
 }
 .menu__onclick {
     transform: rotate(90deg);
@@ -60,16 +75,28 @@ li:not(:last-child) {
     margin-bottom: 10%;
 }
 aside {
-    height: 91vh;
+    height: 91% ;
     width: 30vw;
     background-color: grey;
     position: absolute;
     left: -30vw;
     transition: all 0.3s;
 }
+.wrapper_auth {
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+    margin: 1%;
+    align-items: center;
+}
 .show {
     left: 0px;
     transition: all 0.3s;
-    
+}
+img {
+    margin: 1%;
+    height: 5%;
+    width: 5%;
+    cursor: pointer;
 }
 </style>

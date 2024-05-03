@@ -1,13 +1,25 @@
 import { createWebHistory,createRouter } from "vue-router";
-import main from '@/pages/main'
-
+import Main from "@/pages/main.vue";
+import Send from "@/pages/send.vue";
+import Reg from "@/pages/reg.vue";
+import Auth from "@/pages/auth.vue"
+ 
 const routes = [
     {
         path: '/',
-        component: main
+        component: Main
     },
     {
-
+        path: '/send',
+        component: Send
+    },
+    {
+        path: '/reg',
+        component: Reg
+    },
+    {
+        path: '/auth',
+        component: Auth
     }
 ]
 
